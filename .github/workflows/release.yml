@@ -1,0 +1,41 @@
+name: Build and Release
+
+on:
+  push:
+    tags:
+      - 'v*.*.*'  # 버전 태그가 푸시될 때만 실행
+
+jobs:
+  build:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+
+    name: Build on ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    steps:
+    - name: Checkout source code
+      uses: actions/checkout@v4
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'  # 사용 중인 Node 버전에 맞게
+
+    - name: Install dependencies
+      run: |
+        npm install
+        npm install -g pkg esbuild
+
+    - name: Build project
+      run: |
+        esbuild index.mjs --bundle --platform=node --outfile=dist/ung-boxing.js
+        pkg dist/ung-boxing.js --out-path build/
+
+    - name: Upload Release Assets
+      uses: softprops/action-gh-release@v2
+      with:
+        files: |
+          build/*
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

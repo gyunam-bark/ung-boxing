@@ -1,0 +1,28 @@
+{
+  "name": "ung-boxing",
+  "version": "1.0.0",
+  "description": "a tiny game for studying javascript concepts like class, succession, polymorphism, encapsulation.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "build": "pkg dist/ung-boxing.js --out-path build/",
+    "bundle": "esbuild index.js --bundle --platform=node --outfile=dist/ung-boxing.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gyunam-bark/ung-boxing.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gyunam-bark/ung-boxing/issues"
+  },
+  "homepage": "https://github.com/gyunam-bark/ung-boxing#readme",
+  "type": "module",
+  "bin": "index.js",
+  "dependencies": {
+    "esbuild": "^0.25.3"
+  }
+}
