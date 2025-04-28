@@ -2,8 +2,8 @@ name: Build and Release
 
 on:
   push:
-    tags:
-      - 'v*.*.*'  # 버전 태그가 푸시될 때만 실행
+    branches:
+      - main
 
 jobs:
   build:
