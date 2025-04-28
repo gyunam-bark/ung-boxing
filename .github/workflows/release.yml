@@ -29,7 +29,7 @@ jobs:
 
     - name: Build project
       run: |
-        esbuild index.mjs --bundle --platform=node --outfile=dist/ung-boxing.js
+        esbuild index.js --bundle --platform=node --outfile=dist/ung-boxing.js
         pkg dist/ung-boxing.js --out-path build/
 
     - name: Upload Release Assets
